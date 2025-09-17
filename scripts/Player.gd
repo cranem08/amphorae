@@ -54,10 +54,20 @@ func interact_with_environment():
 	
 	# Check for nearby enemies to attack
 	var enemies = get_tree().get_nodes_in_group("nemean_lion")
+	enemies += get_tree().get_nodes_in_group("hydra")
+	
 	for enemy in enemies:
-		if global_position.distance_to(enemy.global_position) < 50:
+		if global_position.distance_to(enemy.global_position) < 60:
 			enemy.take_damage(1)
 			print("Heracles attacks the enemy!")
+			return
+	
+	# Check for torches to light
+	var torches = get_tree().get_nodes_in_group("torch")
+	for torch in torches:
+		if global_position.distance_to(torch.global_position) < 50:
+			torch.light_torch()
+			return
 
 func take_damage(amount: int):
 	"""Handle player taking damage"""
