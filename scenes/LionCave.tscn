@@ -1,0 +1,45 @@
+[gd_scene load_steps=3 format=3 uid="uid://cck8wr2x5hqbm"]
+
+[ext_resource type="Script" path="res://scripts/LionCave.gd" id="1_t7m4k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cave"]
+size = Vector2(64, 48)
+
+[node name="LionCave" type="Area2D"]
+script = ExtResource("1_t7m4k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_cave")
+
+[node name="CaveSprite" type="ColorRect" parent="."]
+offset_left = -32.0
+offset_top = -24.0
+offset_right = 32.0
+offset_bottom = 24.0
+color = Color(0.2, 0.15, 0.1, 1)
+
+[node name="CaveEntrance" type="ColorRect" parent="CaveSprite"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -8.0
+offset_right = 16.0
+offset_bottom = 8.0
+color = Color(0.05, 0.05, 0.05, 1)
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -40.0
+offset_right = 30.0
+offset_bottom = -24.0
+text = "Lion's Cave"
+horizontal_alignment = 1
