@@ -60,6 +60,15 @@ func interact_with_environment():
 		if global_position.distance_to(enemy.global_position) < 60:
 			enemy.take_damage(1)
 			print("Heracles attacks the enemy!")
+			AudioManager.play_sound("sword_hit")
+			return
+	
+	# Check for hinds to capture
+	var hinds = get_tree().get_nodes_in_group("hind")
+	for hind in hinds:
+		if global_position.distance_to(hind.global_position) < 50:
+			hind.try_capture()
+			AudioManager.play_sound("capture_attempt")
 			return
 	
 	# Check for torches to light
@@ -67,6 +76,7 @@ func interact_with_environment():
 	for torch in torches:
 		if global_position.distance_to(torch.global_position) < 50:
 			torch.light_torch()
+			AudioManager.play_sound("torch_light")
 			return
 
 func take_damage(amount: int):

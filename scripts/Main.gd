@@ -16,6 +16,7 @@ var nemean_lion_scene = preload("res://scenes/NemeanLion.tscn")
 var lion_cave_scene = preload("res://scenes/LionCave.tscn")
 var hydra_scene = preload("res://scenes/LernaeanHydra.tscn")
 var torch_scene = preload("res://scenes/FireTorch.tscn")
+var hind_scene = preload("res://scenes/CeryneianHind.tscn")
 
 var current_level_nodes = []
 
@@ -77,11 +78,25 @@ func setup_labour(labour_number: int):
 			setup_nemean_lion()
 		2:
 			setup_lernaean_hydra()
+		3:
+			setup_ceryneian_hind()
 		_:
 			print("Labour ", labour_number, " not implemented yet")
 			if labour_number <= total_labours:
 				# Show placeholder for unimplemented labours
 				show_labour_placeholder(labour_number)
+
+func setup_ceryneian_hind():
+	"""Setup the third labour: Capture the Ceryneian Hind"""
+	print("The Ceryneian Hind - A golden-horned deer sacred to Artemis")
+	
+	# Add the hind
+	var hind = hind_scene.instantiate()
+	hind.position = Vector2(700, 500)
+	add_child(hind)
+	current_level_nodes.append(hind)
+	
+	AudioManager.play_music("forest_theme")
 
 func setup_nemean_lion():
 	"""Setup the first labour: Slay the Nemean Lion"""
@@ -98,6 +113,8 @@ func setup_nemean_lion():
 	cave.position = Vector2(800, 576)
 	add_child(cave)
 	current_level_nodes.append(cave)
+	
+	AudioManager.play_music("nemean_theme")
 
 func setup_lernaean_hydra():
 	"""Setup the second labour: Kill the Lernaean Hydra"""
@@ -114,6 +131,8 @@ func setup_lernaean_hydra():
 	torch.position = Vector2(300, 576)
 	add_child(torch)
 	current_level_nodes.append(torch)
+	
+	AudioManager.play_music("swamp_theme")
 
 func show_labour_placeholder(labour_number: int):
 	"""Show a placeholder for unimplemented labours"""
