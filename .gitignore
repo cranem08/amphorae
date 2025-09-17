@@ -1,0 +1,19 @@
+# Godot import files (generated)
+.import/
+*.import
+
+# Godot internal metadata
+.godot/
+
+# Exported builds
+export/
+build/
+*.apk
+*.aab
+*.ipa
+*.xcarchive
+
+# OS/editor files
+.DS_Store
+.vscode/
+.idea/
